@@ -2,11 +2,11 @@ import express from 'express';
 import { createServer } from 'node:http';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import dotenv from 'dotenv'; // 👈 Import dotenv
+import dotenv from 'dotenv';
 import userRoutes from "./routes/users.routes.js";
 import { connectToSocket } from './controllers/socketManager.js';
 
-dotenv.config(); // 👈 Load environment variables
+dotenv.config();
 
 const app = express();
 const server = createServer(app);
@@ -29,7 +29,7 @@ app.get("/home", (req, res) => {
 
 const start = async () => {
   try {
-    const connectionDB = await mongoose.connect(process.env.MONGO_URI); // 👈 Use env variable
+    const connectionDB = await mongoose.connect(process.env.MONGO_URI);
     console.log(`MongoDB Connected: ${connectionDB.connection.host}`);
 
     server.listen(app.get("port"), () => {
